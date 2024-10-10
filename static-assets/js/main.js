@@ -9,7 +9,7 @@
  * Released under the MIT license
  * https://github.com/lokesh/lightbox2/blob/master/LICENSE
  */
- 
+
 
 function localRedirect(direction) {
  	window.location.href = direction;
@@ -29,7 +29,7 @@ function localRedirect(direction) {
           e.preventDefault();
           var thisButton = $("#form-submit");
            alertify.set('notifier','position', 'top-right');
-          
+
           if(!thisButton.hasClass("loading") && !thisButton.hasClass("done")){
               var frm = $("#contact");
               if (!frm[0].checkValidity()) {
@@ -131,7 +131,8 @@ function localRedirect(direction) {
     var self = this;
     $('body').on('click', 'a[rel^=lightbox], area[rel^=lightbox], a[data-lightbox], area[data-lightbox]', function(event) {
       const iceOn = $('html').hasClass('craftercms-ice-on');
-      if (!iceOn) {
+      const iceByPass = $('html').hasClass('craftercms-ice-bypass');
+      if (!iceOn || iceByPass) {
         self.start($(event.currentTarget));
         return false;
       }
